@@ -11,7 +11,7 @@
 
 Pop up Ciallo every morning.
 
-Ciallo Widget 是一个适用于 Class Widgets 的插件，用来在桌面上显示一条可自定义的 Ciallo 提示。
+Ciallo Widget 是一个适用于 Class Widgets 2 的插件，用来在 Class Widgets 2 上显示一条 Ciallo 提示。
 
 ### 截图 / Screenshots
 
