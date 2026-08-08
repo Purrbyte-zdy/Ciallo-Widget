@@ -1,0 +1,20 @@
+[project]
+name = "top-purrbyte-ciallo-widget"
+version = "26.1.0"
+description = "Pop up Ciallo every morning."
+readme = "README.md"
+authors = [
+    { name = "Purrbyte-zdy", email = "zhangdingyi2022@outlook.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "class-widgets-sdk>=0.4.2",
+    "pip>=26.2.1",
+]
+
+[project.scripts]
+ciallo-widget = "ciallo_widget:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
