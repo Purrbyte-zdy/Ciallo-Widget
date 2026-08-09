@@ -1,0 +1,72 @@
+name: Release Plugin
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: "Set up Python"
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+
+      - name: Install the project
+        run: uv sync --locked --all-extras --dev
+
+      - name: Build plugin packages
+        run: |
+          uv run cw-plugin-pack
+          uv run cw-plugin-pack --format zip
+
+      - name: Publish to plugin registry
+        env:
+          CWPT_TOKEN: ${{ secrets.PLUGIN_PUBLISH_TOKEN }}
+        run: |
+          uv run cw-plugin-publish
+
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Install git-cliff
+        run: |
+          cargo install git-cliff
+
+      - name: Generate changelog with git-cliff
+        id: generate_changelog
+        run: |
+          git-cliff --config .git-cliff.toml --tag v${{ env.VERSION }} > CHANGELOG.md
+          echo "CHANGELOG<<EOF" >> $GITHUB_ENV
+          cat CHANGELOG.md >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Release v${{ env.VERSION }}
+          draft: false
+          prerelease: false
+          files: |
+            *.cwplugin
+            *.zip
+          body: ${{ env.CHANGELOG }}
+          generate_release_notes: false
