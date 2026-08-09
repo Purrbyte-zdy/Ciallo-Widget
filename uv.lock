@@ -112,7 +112,7 @@ wheels = [
 
 [[package]]
 name = "top-purrbyte-ciallo-widget"
-version = "1.0.0"
+version = "26.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "class-widgets-sdk" },
