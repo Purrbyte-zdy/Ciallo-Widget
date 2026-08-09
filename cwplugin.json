@@ -1,8 +1,8 @@
 {
   "id": "top.purrbyte.ciallo-widget",
   "name": "Ciallo Widget",
-  "version": "1.0.0",
-  "api_version": ">=0.4.2",
+  "version": "26.1.0-alpha2",
+  "api_version": ">=0.4.1",
   "entry": "main.py",
   "author": "Purrbyte",
   "description": "Pop up Ciallo every morning.",
