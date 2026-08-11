@@ -12,6 +12,7 @@ class Plugin(CW2Plugin):
         super().__init__(api)
         self.notification_provider = None
         self.provider_id = str(self.pid)
+        self.current_statue = self.api.runtime.current_status
         
         # 请在此导入第三方库 / Import third-party libraries here
 
@@ -22,7 +23,7 @@ class Plugin(CW2Plugin):
             provider_id = self.provider_id,
             name = src.name,
             icon = src.icon,
-            use_system_notify = True
+            use_system_notify = False
         )
         self.api.widgets.register(
             widget_id = src.widget_id,
@@ -33,10 +34,18 @@ class Plugin(CW2Plugin):
             default_settings = {
                 "target_title": "Welcome",
                 "target_text": "Ciallo～(∠・ω< )⌒★",
-                "display_in_class": False,  # 是否在非下课时段显示
+                "display_in_class": False,
             }
+        )
+        self.api.ui.register_settings_page(
+            qml_path = src.qml_path / "settings.qml",
+            title = "Ciallo Widget Settings",
+            icon = "ic_fluent_animal_cat_20_regular"
         )
         print(f"Ciallo Widget loaded")
 
     def on_unload(self):
+        self.api.ui.unregister_settings_page(
+            qml_path = src.qml_path / "settings.qml"
+        )
         print(f"Ciallo Widget unloaded")
