@@ -3,9 +3,12 @@ Ciallo Widget
 Pop up Ciallo every morning.
 """
 
-from ClassWidgets.SDK import CW2Plugin, PluginAPI
+from ClassWidgets.SDK import CW2Plugin, PluginAPI, ConfigBaseModel
 
 import src
+from loguru import logger
+
+plugin_logger = logger.bind(plugin="Ciallo Widget")
 
 class Plugin(CW2Plugin):
     def __init__(self, api: PluginAPI):
@@ -13,8 +16,8 @@ class Plugin(CW2Plugin):
         self.notification_provider = None
         self.provider_id = str(self.pid)
         self.current_statue = self.api.runtime.current_status
-        
-        # 请在此导入第三方库 / Import third-party libraries here
+        self.pid_str = str(self.pid)
+        self.config: ConfigBaseModel = src.Config()
 
 
     def on_load(self):
@@ -42,10 +45,11 @@ class Plugin(CW2Plugin):
             title = "Ciallo Widget Settings",
             icon = "ic_fluent_animal_cat_20_regular"
         )
-        print(f"Ciallo Widget loaded")
+        self.api.config.register_plugin_model(self.pid_str, self.config)
+        plugin_logger.info(f"Ciallo Widget loaded")
 
     def on_unload(self):
         self.api.ui.unregister_settings_page(
             qml_path = src.qml_path / "settings.qml"
         )
-        print(f"Ciallo Widget unloaded")
+        plugin_logger.info(f"Ciallo Widget unloaded")
