@@ -9,6 +9,7 @@ authors = [
 requires-python = ">=3.14"
 dependencies = [
     "class-widgets-sdk>=0.4.2",
+    "loguru>=0.7.3",
     "pip>=26.2.1",
 ]
 
@@ -18,3 +19,15 @@ ciallo-widget = "ciallo_widget:main"
 [build-system]
 requires = ["uv_build>=0.12.3,<0.13.0"]
 build-backend = "uv_build"
+
+[[tool.uv.index]]
+name = "tuna"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+
+[[tool.uv.index]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple/"
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple/"
