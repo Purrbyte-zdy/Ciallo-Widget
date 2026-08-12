@@ -1,6 +1,8 @@
 from ClassWidgets.SDK import NotificationLevel, NotificationProvider
-from configuration import Config
-from main import plugin_logger
+from loguru import logger
+from src.configuration import Config
+
+plugin_logger = logger.bind(plugin="Ciallo Widget")
 
 
 def is_time_to_notify(current_statue: str, display_in_class: bool) -> bool:

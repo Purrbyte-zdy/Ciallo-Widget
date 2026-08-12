@@ -1,9 +1,9 @@
 from ClassWidgets.SDK import ConfigBaseModel
+from loguru import logger
 
-from main import plugin_logger
+plugin_logger = logger.bind(plugin="Ciallo Widget")
 
 class Config(ConfigBaseModel):
-
     display_in_class: bool = False
     target_text: str = "Ciallo～(∠・ω< )⌒★"
 
