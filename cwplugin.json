@@ -1,13 +1,12 @@
 {
   "id": "top.purrbyte.ciallo-widget",
   "name": "Ciallo Widget",
-  "version": "26.1.0-alpha6",
+  "version": "26.1.0-alpha7",
   "api_version": ">=0.4.1",
   "entry": "main.py",
   "author": "Purrbyte",
   "description": "Pop up Ciallo every morning.",
   "url": "https://github.com/Purrbyte-zdy/Ciallo-Widget",
   "readme": "README.md",
-  "icon": "icon.png",
-  "tag_ids": ["生活"]
+  "icon": "icon.png"
 }
