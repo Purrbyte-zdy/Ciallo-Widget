@@ -8,6 +8,5 @@
   "description": "Pop up Ciallo every morning.",
   "url": "https://github.com/Purrbyte-zdy/Ciallo-Widget",
   "readme": "README.md",
-  "icon": "icon.png",
-  "tag_ids": ["生活"]
+  "icon": "icon.png"
 }
