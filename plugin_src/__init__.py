@@ -12,4 +12,4 @@ qml_path = root_path / "qml"
 
 __all__ = ["Config", "widget_id", "name", "description", "icon", "qml_path"]
 
-print("Debug: src.__init__ successfully run.")
+print("Debug: plugin_src.__init__ successfully run.")

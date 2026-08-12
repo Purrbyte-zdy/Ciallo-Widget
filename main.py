@@ -11,10 +11,10 @@ plugin_logger = logger.bind(plugin="Ciallo Widget")
 class Plugin(CW2Plugin):
     def __init__(self, api: PluginAPI):
         super().__init__(api)
-        import src
-        plugin_logger.debug(f"[PLUGIN] src.__file__ = {src.__file__}")
-        plugin_logger.debug(f"[PLUGIN] dir(src) = {dir(src)}")
-        self.src = src
+        import plugin_src
+        plugin_logger.debug(f"[PLUGIN] src.__file__ = {plugin_src.__file__}")
+        plugin_logger.debug(f"[PLUGIN] dir(src) = {dir(plugin_src)}")
+        self.src = plugin_src
         self.notification_provider = None
         self.provider_id = str(self.pid)
         self.current_statue = self.api.runtime.current_status

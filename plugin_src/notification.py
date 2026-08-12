@@ -1,6 +1,6 @@
 from ClassWidgets.SDK import NotificationLevel, NotificationProvider
 from loguru import logger
-from src.configuration import Config
+from plugin_src.configuration import Config
 
 plugin_logger = logger.bind(plugin="Ciallo Widget")
 
