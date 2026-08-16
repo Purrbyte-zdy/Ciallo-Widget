@@ -1,7 +1,7 @@
 {
   "id": "top.purrbyte.ciallo-widget",
   "name": "Ciallo Widget",
-  "version": "26.1.0-alpha10",
+  "version": "26.1.0-alpha13",
   "api_version": ">=0.5.0",
   "entry": "main.py",
   "author": "Purrbyte",
