@@ -44,7 +44,7 @@ class Plugin(CW2Plugin):
         )
         self.api.ui.register_settings_page(
             qml_path = self.src.qml_path / "settings.qml",
-            title = "Ciallo Widget Settings",
+            title = "Ciallo Widget",
             icon = "ic_fluent_animal_cat_20_regular"
         )
         self.api.config.register_plugin_model(self.pid_str, self.config)
